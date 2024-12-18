@@ -12,15 +12,13 @@ all: bin bin/main
 ENSCRIPT_FLAGS=-C -T 2 -p - -M Letter -Ecpp --color -fCourier8
 VALGRIND_FLAGS=-v --leak-check=yes --track-origins=yes --leak-check=full --show-leak-kinds=all 
 
-compiler=clang++-18
+compiler=clang++-16
 #compiler=g++
 
 # clang
 # https://clang.llvm.org/cxx_status.html
-# Clang 18 has support for some of the features of the C++ standard following 
-# C++23, informally referred to as C++26. You can use Clang in C++2c mode with 
-# the -std=c++2c option.
-CPP_VERSION=c++2c
+# clang 16 still uses c++2b to represent c++23
+CPP_VERSION=c++2b
 
 # g++ (Linux)
 # Version 10 or later
@@ -35,9 +33,6 @@ bin:
 bin/main: bin src/*.cpp include/*.h
 	${compiler} -std=${CPP_VERSION} -o bin/main -g -Wall src/*.cpp -Iinclude
 
-#bin/main.o: bin src/helloWorld.cpp
-#	${compiler} -std=c++20 -c -o bin/main.o -g -Wall src/helloWorld.cpp 
- 
 valgrind: bin/main
 	valgrind ${VALGRIND_FLAGS} bin/main
 
@@ -48,4 +43,4 @@ runMe: bin/main
 	bin/main
 	
 clean:
-	rm -rf bin/main bin/*.o bin/main.dSYM bin/*.pdf
+	rm -rf bin/main bin/*.o bin/*.pdf
