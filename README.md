@@ -1,6 +1,4 @@
-## C++ in VS Code on Mac, Windows, Linux
-
-### Make sure your set the platform correctly on the bottom right of the VS Code window.
+## C++ in VS Code in a Linux Dev Container
 
 ### Code Formatting
 Apply the coding standards via:
@@ -19,56 +17,14 @@ Control-Shift-B: Build (works)
 
 Terminal | Run task | clean (works, calls *make clean*)
 
-## Mac: 
-
-Use built in gcc/llvm and debugger: 
-
-* BUILD: WORKING 
-* DEBUG: WORKING
-* Need to install https://github.com/vadimcn/vscode-lldb
-* stopAtEntry not working, set your own breakpoint in main()
-* [Freezes on Mac?](https://github.com/microsoft/vscode/issues/145387)
-* [lldb-mi occasionally freezes on Mac](https://github.com/microsoft/vscode-cpptools/issues/7240)
-
 ## Linux: 
 
-Use built in gcc and debugger
+Installs clang-16
 
 * BUILD: WORKING
 * DEBUG: WORKING
 * If you want to use clang++ on linux make sure you have [libstdc++ installed correctly.](https://stackoverflow.com/a/66163184)
 * gdb on Linux won't step into functions/run in functions [reliably](https://github.com/microsoft/vscode-cpptools/issues/3648)
-
-## Windows: 
-
-current test: using Visual Studio Build Tools (cl, nmake)
-* BUILD: WORKING 
-* DEBUG: WORKING
-* Set up debug console correctly : https://github.com/microsoft/vscode-cpptools/pull/6794
-* ```lauch.json```: ```"console": "integratedTerminal",```  Works on all platforms.
-* If the VS Build Tools are installed in Program Files x86, edit ```intelliSenseMode``` in c_cpp_properties.json to be ```windows-msvc-x86```
-
-Git: [Git For Windows](https://git-scm.com/download/win) Not the Portable Install
-
-* Do you need to install Git strictly AFTER VS Build Tools? Maybe
-
-Which is the easiest compiler tool chain for students to install/use on Windows?
-
- * cygwin
- * mingw
- * [VS Build Tools](https://visualstudio.microsoft.com/downloads/?q=build+tools#build-tools-for-visual-studio-2022)
-   *   Install *Desktop development with C++*
-   *   Run VS Code from *Developer Command Prompt for VS 2022*
-   *   OR: [Run VS Code Outside of the Developer Command Prompt](https://code.visualstudio.com/docs/cpp/config-msvc#_run-vs-code-outside-the-developer-command-prompt)
-   *   ~~Select MSVC v142 - VS 2019 C++ ....~~
-   *   ~~Select C++/CLI support for v143....~~
- * msys
- * ?
-
-## Codespaces
-* This repository contains a custom container that installs enscript and ghostscript to easily print source code
-* Students can run ```make -f Makefile_linux printAll``` to print the code to bin/src.pdf. 
-* Students can then Right Click on src.pdf and download the PDF locally
 
 ## Notes
 * [GDB to LLDB Command Mapping](https://lldb.llvm.org/use/map.html)
