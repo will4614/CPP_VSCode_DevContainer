@@ -102,4 +102,14 @@
     // https://github.com/orgs/community/discussions/4760
     //"terminal.integrated.gpuAcceleration": "off",
 
+		"cmake.debugConfig": { // ADD THIS FOR LLDB SUPPORT IN CMAKE
+    "type": "lldb",
+    "terminal": "external",
+    "name": "C/C++ Launch (LLDB)",
+    "miDebuggerPath": "/usr/bin/lldb"
+  },
+  "cmake.environment": {
+    "CXX": "/usr/bin/clang++-16 -fstandalone-debug -g"
+  },
+
 }
