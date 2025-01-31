@@ -19,6 +19,7 @@ compiler=clang++-16
 # https://clang.llvm.org/cxx_status.html
 # clang 16 still uses c++2b to represent c++23
 CPP_VERSION=c++2b
+CFLAGS=-fstandalone-debug -g -Wall
 
 # g++ (Linux)
 # Version 10 or later
@@ -31,7 +32,7 @@ bin:
 	mkdir -p bin
 
 bin/main: bin src/*.cpp include/*.h
-	${compiler} -std=${CPP_VERSION} -o bin/main -g -Wall src/*.cpp -Iinclude
+	${compiler} -std=${CPP_VERSION} -o bin/main ${CFLAGS} src/*.cpp -Iinclude
 
 valgrind: bin/main
 	valgrind ${VALGRIND_FLAGS} bin/main
